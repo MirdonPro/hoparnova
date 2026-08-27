@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(!document.querySelector('link[href*="hoparnova-hero-v5.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='hoparnova-hero-v5.css?v=5';
+    link.href='hoparnova-hero-v5.css?v=6';
     document.head.appendChild(link);
   }
-  import('./hoparnova-hero-v5.js?v=5').catch(()=>{
+  import('./hoparnova-hero-v6.js?v=6').catch(()=>{
     if(!document.querySelector('.hero-webgl-v5')){
       const hero=document.querySelector('.masthead');
       if(hero){
