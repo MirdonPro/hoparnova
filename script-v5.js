@@ -1,3 +1,8 @@
+const refinement=document.createElement('link');
+refinement.rel='stylesheet';
+refinement.href='refine-v8.css?v=8';
+document.head.appendChild(refinement);
+
 document.addEventListener('DOMContentLoaded',()=>{
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
