@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
 
-  if(!document.querySelector('link[href*="hoparnova-webgl-v3.css"]')){
+  if(!document.querySelector('link[href*="hoparnova-webgl-v4.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='hoparnova-webgl-v3.css?v=3';
+    link.href='hoparnova-webgl-v4.css?v=4';
     document.head.appendChild(link);
   }
-  import('./hoparnova-webgl-v3.js?v=3').catch(()=>{
+  import('./hoparnova-webgl-v4.js?v=4').catch(()=>{
     document.body.classList.add('webgl-failed');
     if(!document.querySelector('.webgl-sonic-layer')){
       const fallback=document.createElement('div');
