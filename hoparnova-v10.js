@@ -1,47 +1,31 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const root=document.documentElement;
-  const body=document.body;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const loader=document.querySelector('.page-loader');
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
 
-  // Branded Sound Environments: add a focused commercial doorway without turning
-  // the artist site into an agency homepage.
-  if(!document.querySelector('link[href*="brand-sound-v1.css"]')){
-    const brandStyles=document.createElement('link');
-    brandStyles.rel='stylesheet';
-    brandStyles.href='brand-sound-v1.css?v=1';
-    document.head.appendChild(brandStyles);
-  }
+  // The homepage now owns its For Brands link and teaser in HTML.
+  // Do not inject duplicate navigation or duplicate brand sections here.
 
-  const primaryNav=document.querySelector('.nav-shell nav');
-  if(primaryNav&&!primaryNav.querySelector('a[href="/brand-sound.html"]')){
-    const brandsLink=document.createElement('a');
-    brandsLink.href='/brand-sound.html';
-    brandsLink.textContent='For Brands';
-    primaryNav.appendChild(brandsLink);
-  }
-
-  const listenSection=document.querySelector('#listen');
-  if(listenSection&&!document.querySelector('.brand-home')){
-    const section=document.createElement('section');
-    section.className='brand-home';
-    section.setAttribute('aria-labelledby','brand-home-title');
-    section.innerHTML=`
-      <div class="brand-home-inner">
-        <div class="brand-home-kicker reveal">FOR HOSPITALITY & BRANDS</div>
-        <div class="brand-home-copy">
-          <h2 id="brand-home-title" class="reveal">Your space can have <em>its own sound.</em></h2>
-          <p class="reveal">HoparNova creates custom-composed sound environments for restaurants, cafés, hotels, lounges, retail, offices, events and brands. The music is shaped around the room, audience, time of day and identity—rather than pulled from the same public playlists everyone else can access.</p>
-          <div class="brand-home-actions reveal">
-            <a href="/brand-sound.html">Explore branded sound ↗</a>
-            <a href="mailto:info@mirdon.com?subject=HoparNova%20Branded%20Sound%20Project">Start a project</a>
-          </div>
-          <div class="brand-home-note reveal">Optional brand-name vocal signatures · custom sonic motifs · venue-specific music systems · worldwide commissions</div>
+  const masthead=document.querySelector('.masthead');
+  if(masthead&&!masthead.querySelector('.sonic-stage')){
+    const stage=document.createElement('div');
+    stage.className='sonic-stage';
+    stage.setAttribute('aria-hidden','true');
+    stage.innerHTML=`
+      <div class="sonic-object">
+        <div class="sonic-ring r1"></div>
+        <div class="sonic-ring r2"></div>
+        <div class="sonic-ring r3"></div>
+        <div class="sonic-disc">
+          <div class="sonic-core"><div><b>HOPAR<br>NOVA</b><small>YEREVAN / SOUND</small></div></div>
         </div>
-      </div>`;
-    listenSection.parentNode.insertBefore(section,listenSection);
+        <div class="sonic-glass"></div>
+      </div>
+      <div class="sonic-caption">SONIC OBJECT · 001</div>`;
+    const mastBottom=masthead.querySelector('.mast-bottom');
+    masthead.insertBefore(stage,mastBottom||null);
+    masthead.classList.add('has-sonic-object');
   }
 
   const hideLoader=()=>loader?.classList.add('hide');
@@ -50,21 +34,45 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const progress=document.querySelector('.scroll-progress span');
   const heroShape=document.querySelector('.hero-shape');
+  const sonicObject=document.querySelector('.sonic-object');
+  const sonicStage=document.querySelector('.sonic-stage');
+  let pointerX=0,pointerY=0;
   let ticking=false;
+
+  if(sonicStage&&!reduced&&window.matchMedia('(pointer:fine)').matches){
+    sonicStage.addEventListener('pointermove',e=>{
+      const r=sonicStage.getBoundingClientRect();
+      pointerX=((e.clientX-r.left)/r.width-.5)*8;
+      pointerY=((e.clientY-r.top)/r.height-.5)*-7;
+    });
+    sonicStage.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0});
+  }
+
   const onScroll=()=>{
     if(ticking)return;
     ticking=true;
     requestAnimationFrame(()=>{
       const y=window.scrollY;
       const h=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
-      if(progress)progress.style.transform=`scaleX(${Math.min(y/h,1)})`;
+      if(progress) progress.style.transform=`scaleX(${Math.min(y/h,1)})`;
       if(!reduced&&window.innerWidth>760&&heroShape){
-        heroShape.style.transform=`translate3d(0,${Math.min(y*.045,42)}px,0)`;
+        heroShape.style.transform=`translate3d(0,${Math.min(y*.035,34)}px,0) scale(.8)`;
+      }
+      if(sonicObject&&!reduced){
+        const hero=masthead?.getBoundingClientRect();
+        const heroHeight=Math.max(masthead?.offsetHeight||window.innerHeight,1);
+        const local=hero?Math.min(Math.max((-hero.top)/heroHeight,0),1):0;
+        const spin=-18+local*132;
+        const tilt=56-local*17+pointerY;
+        const yaw=-10+local*24+pointerX;
+        const lift=local*-18;
+        sonicObject.style.transform=`translate3d(0,${lift}px,0) rotateX(${tilt}deg) rotateY(${yaw}deg) rotateZ(${spin}deg)`;
       }
       ticking=false;
     });
   };
   window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
   onScroll();
 
   const revealEls=[...document.querySelectorAll('.reveal')];
@@ -78,9 +86,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
     },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     revealEls.forEach(el=>revealObserver.observe(el));
-  }else{
-    revealEls.forEach(el=>el.classList.add('in'));
-  }
+  }else revealEls.forEach(el=>el.classList.add('in'));
 
   const records=[...document.querySelectorAll('[data-record]')];
   if('IntersectionObserver' in window){
@@ -88,9 +94,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       entries.forEach(entry=>entry.target.classList.toggle('active',entry.isIntersecting));
     },{threshold:window.innerWidth<680?.16:.34,rootMargin:'-6% 0px -12% 0px'});
     records.forEach(record=>recordObserver.observe(record));
-  }else{
-    records.forEach(record=>record.classList.add('active'));
-  }
+  }else records.forEach(record=>record.classList.add('active'));
 
   const navLinks=[...document.querySelectorAll('nav a[href^="#"]')];
   const navTargets=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
@@ -107,8 +111,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const track=document.querySelector('.interlude-track');
   if(track&&!reduced){
-    let x=0;
-    let last=performance.now();
+    let x=0,last=performance.now();
     const speed=window.innerWidth<680?22:34;
     const animate=now=>{
       const dt=Math.min((now-last)/1000,.05);
