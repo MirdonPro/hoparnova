@@ -4,20 +4,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
 
-  if(!document.querySelector('link[href*="hoparnova-webgl-v4.css"]')){
+  if(!document.querySelector('link[href*="hoparnova-hero-v5.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='hoparnova-webgl-v4.css?v=4';
+    link.href='hoparnova-hero-v5.css?v=5';
     document.head.appendChild(link);
   }
-  import('./hoparnova-webgl-v4.js?v=4').catch(()=>{
-    document.body.classList.add('webgl-failed');
-    if(!document.querySelector('.webgl-sonic-layer')){
-      const fallback=document.createElement('div');
-      fallback.className='webgl-sonic-layer';
-      fallback.setAttribute('aria-hidden','true');
-      fallback.innerHTML='<div class="webgl-sonic-fallback"></div>';
-      document.body.appendChild(fallback);
+  import('./hoparnova-hero-v5.js?v=5').catch(()=>{
+    if(!document.querySelector('.hero-webgl-v5')){
+      const hero=document.querySelector('.masthead');
+      if(hero){
+        const fallback=document.createElement('div');
+        fallback.className='hero-webgl-v5';
+        fallback.setAttribute('aria-hidden','true');
+        fallback.innerHTML='<div class="hero-webgl-fallback"></div>';
+        hero.prepend(fallback);
+      }
     }
   });
 
@@ -26,7 +28,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(hideLoader,1200);
 
   const progress=document.querySelector('.scroll-progress span');
-  const heroShape=document.querySelector('.hero-shape');
   let ticking=false;
   const onScroll=()=>{
     if(ticking)return;
@@ -35,9 +36,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       const y=window.scrollY;
       const h=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
       if(progress) progress.style.transform=`scaleX(${Math.min(y/h,1)})`;
-      if(!reduced&&window.innerWidth>760&&heroShape){
-        heroShape.style.transform=`translate3d(0,${Math.min(y*.02,20)}px,0) scale(.7)`;
-      }
       ticking=false;
     });
   };
