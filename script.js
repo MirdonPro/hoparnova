@@ -1,26 +1,23 @@
 document.getElementById('year').textContent=new Date().getFullYear();
 
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach((el)=>observer.observe(el));
+const loader=document.querySelector('.page-loader');
+window.addEventListener('load',()=>setTimeout(()=>loader?.classList.add('hide'),180));
 
-if(!reduced){
-  const glow=document.querySelector('.cursor-glow');
-  window.addEventListener('pointermove',(e)=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';},{passive:true});
-
-  document.querySelectorAll('[data-tilt]').forEach((card)=>{
-    card.addEventListener('pointermove',(e)=>{
-      if(window.innerWidth<900)return;
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5;
-      const y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`perspective(1400px) rotateX(${y*-2.3}deg) rotateY(${x*2.3}deg)`;
-    });
-    card.addEventListener('pointerleave',()=>{card.style.transform='';});
+const records=[...document.querySelectorAll('[data-record]')];
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('active');
+    else entry.target.classList.remove('active');
   });
+},{threshold:.45});
+records.forEach(record=>io.observe(record));
 
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const mast=document.querySelector('.mast-copy');
+  const red=document.querySelector('.red-block');
   window.addEventListener('scroll',()=>{
-    const sun=document.querySelector('.sun');
-    if(sun) sun.style.transform=`translateY(${window.scrollY*.055}px)`;
+    const y=window.scrollY;
+    if(mast) mast.style.transform=`translateY(${Math.min(y*.09,80)}px)`;
+    if(red) red.style.transform=`translateY(${Math.min(y*.05,60)}px) rotate(7deg)`;
   },{passive:true});
 }
