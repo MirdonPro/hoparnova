@@ -4,18 +4,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
 
-  if(!document.querySelector('link[href*="hoparnova-hero-v5.css"]')){
+  if(!document.querySelector('link[href*="hoparnova-hero-v7.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='hoparnova-hero-v5.css?v=6';
+    link.href='hoparnova-hero-v7.css?v=7';
     document.head.appendChild(link);
   }
-  import('./hoparnova-hero-v6.js?v=6').catch(()=>{
-    if(!document.querySelector('.hero-webgl-v5')){
+  import('./hoparnova-hero-v7.js?v=7').catch(()=>{
+    if(!document.querySelector('.hero-webgl-v7')){
       const hero=document.querySelector('.masthead');
       if(hero){
         const fallback=document.createElement('div');
-        fallback.className='hero-webgl-v5';
+        fallback.className='hero-webgl-v7';
         fallback.setAttribute('aria-hidden','true');
         fallback.innerHTML='<div class="hero-webgl-fallback"></div>';
         hero.prepend(fallback);
