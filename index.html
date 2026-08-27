@@ -3,136 +3,118 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="description" content="HoparNova — Yerevan-rooted music across jazz, electronic fusion, cinematic sound and hip-hop." />
-  <meta name="theme-color" content="#f1eee7" />
-  <title>HoparNova — Music from Yerevan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v6.css?v=6" />
-  <link rel="stylesheet" href="refine-v8.css?v=8" />
-  <link rel="stylesheet" href="headline-fix-v9.css?v=9" />
+  <title>HoparNova — Yerevan Jazz, Electronic Fusion & Armenian Sound</title>
+  <meta name="description" content="HoparNova is a Yerevan music project blending jazz, electronic fusion, Armenian memory and cinematic atmosphere. Explore the albums and listen worldwide." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#f3f0e8" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href="https://hoparnova.com/" />
+  <meta property="og:type" content="music.musician" />
+  <meta property="og:site_name" content="HoparNova" />
+  <meta property="og:title" content="HoparNova — Music from Yerevan" />
+  <meta property="og:description" content="Jazz, electronic fusion, Armenian memory and cinematic atmosphere from Yerevan." />
+  <meta property="og:url" content="https://hoparnova.com/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="HoparNova — Music from Yerevan" />
+  <meta name="twitter:description" content="Explore HoparNova's Yerevan-rooted catalog across jazz, electronic fusion, cinematic sound and hip-hop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hoparnova-v10.css?v=10" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MusicGroup",
+    "name":"HoparNova",
+    "url":"https://hoparnova.com/",
+    "description":"A Yerevan-rooted independent music project blending jazz, electronic fusion, Armenian memory, cinematic atmosphere and hip-hop collaborations.",
+    "genre":["Jazz","Electronic fusion","New Age","Hip-Hop/Rap","Cinematic music"],
+    "foundingLocation":{"@type":"City","name":"Yerevan","containedInPlace":{"@type":"Country","name":"Armenia"}},
+    "sameAs":["https://music.apple.com/us/artist/hoparnova/1802256419","https://www.shazam.com/artist/hoparnova/1802256419"],
+    "album":[
+      {"@type":"MusicAlbum","name":"Yerevan Jazz Cafe (After Hours)","datePublished":"2026-06-30","numTracks":35,"url":"https://music.apple.com/us/album/yerevan-jazz-cafe-after-hours/6785843987"},
+      {"@type":"MusicAlbum","name":"Hookah Time (feat. Malo Mnimo)","datePublished":"2025-09-27","numTracks":21,"url":"https://music.apple.com/us/album/hookah-time-feat-malo-mnimo/1842965548"},
+      {"@type":"MusicAlbum","name":"Stoneborn","datePublished":"2025-06-01","numTracks":21,"url":"https://music.apple.com/us/album/stoneborn/1818005621"},
+      {"@type":"MusicAlbum","name":"Yerevan Fusion Flow","datePublished":"2025-03-15","numTracks":21,"url":"https://music.apple.com/us/album/yerevan-fusion-flow/1802293847"}
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-loader" aria-hidden="true"><span>HOPARNOVA</span></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
   <header class="nav-shell">
-    <a class="logo" href="#top">HOPAR<br>NOVA</a>
-    <div class="nav-meta"><span>YEREVAN, AM</span><span>MIRDON PRODUCTION</span></div>
-    <nav><a href="#records">Records</a><a href="#about">About</a><a href="#listen">Listen</a></nav>
+    <a class="logo" href="#top" aria-label="HoparNova home">HOPAR<br>NOVA</a>
+    <div class="nav-meta"><span>YEREVAN, ARMENIA</span><span>MIRDON PRODUCTION</span></div>
+    <nav aria-label="Primary navigation"><a href="#records">Records</a><a href="#about">About</a><a href="#listen">Listen</a></nav>
   </header>
 
-  <main id="top">
-    <section class="masthead">
+  <main id="main">
+    <section class="masthead" id="top" aria-labelledby="hero-title">
+      <div class="hero-topline reveal">
+        <span>INDEPENDENT MUSIC PROJECT · YEREVAN</span>
+        <a class="latest-pill" href="#record-jazz">LATEST · YEREVAN JAZZ CAFE</a>
+      </div>
       <div class="mast-copy">
-        <p class="eyebrow">AN INDEPENDENT MUSIC PROJECT FROM YEREVAN</p>
-        <h1><span>HOPAR</span><span class="outline">NOVA</span></h1>
+        <h1 id="hero-title"><span>HOPAR</span><span class="outline">NOVA</span></h1>
       </div>
-      <div class="mast-bottom">
-        <p>Jazz / electronic fusion / cinematic Armenian memory / hip-hop collaborations.</p>
-        <a href="#records">DISCOVER THE RECORDS ↓</a>
+      <div class="hero-shape" aria-hidden="true"></div>
+      <div class="mast-bottom reveal">
+        <p>Music shaped by Yerevan: jazz after midnight, electronic texture, Armenian geography, cinematic memory and unexpected collaborations.</p>
+        <a class="text-link" href="#records">Explore the records ↓</a>
       </div>
-      <div class="red-block" aria-hidden="true"></div>
     </section>
 
-    <section class="manifesto" id="about">
-      <div class="manifesto-kicker">THE PROJECT</div>
-      <p>HoparNova treats <strong>place as an instrument.</strong> Streets, stone, smoke, cafés, memory and Armenian geography become rhythm, atmosphere and melody.</p>
+    <section class="artist-intro" id="about" aria-labelledby="about-title">
+      <div class="section-kicker reveal">THE PROJECT</div>
+      <h2 id="about-title" class="reveal">HoparNova turns <em>place into sound.</em></h2>
+      <div class="artist-copy reveal">HoparNova is an independent Yerevan-rooted music project released through Mirdon Production. Its catalog moves between jazz, electronic fusion, New Age and hip-hop while returning to a shared vocabulary: Armenian streets and stone, late-night cafés, landscape, memory, smoke, movement and the atmosphere of the city after dark.</div>
     </section>
 
-    <section class="records" id="records">
-      <div class="records-title"><span>01</span><h2>RECORDS</h2><small>2025—2026</small></div>
+    <section class="records" id="records" aria-labelledby="records-title">
+      <div class="records-head reveal"><span>01</span><h2 id="records-title">RECORDS</h2><small>2025—2026</small></div>
+      <p class="records-intro reveal">Four albums, four distinct environments. Listen inside the page with the official Apple Music players, or open each release on your preferred streaming platform.</p>
 
-      <article class="record feature" data-record>
+      <article class="record feature" id="record-jazz" data-record aria-labelledby="jazz-title">
         <div class="record-number">04</div>
-        <div class="record-title"><span>2026</span><h3>YEREVAN<br>JAZZ CAFE</h3><em>(AFTER HOURS)</em></div>
-        <div class="record-visual player-card"><iframe title="Yerevan Jazz Cafe (After Hours) by HoparNova" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/yerevan-jazz-cafe-after-hours/6785843987"></iframe></div>
-        <div class="record-copy">
-          <p>Late-night jazz for a city after closing time. Coffee, rain, Ararat, Saryan Street, Northern Avenue and the quiet architecture of 2 AM.</p>
-          <span>35 TRACKS · JUN 30 2026</span>
-          <div class="platform-label">LISTEN ON</div>
-          <div class="platform-links" aria-label="Yerevan Jazz Cafe listening platforms">
-            <a class="primary-platform" href="https://music.apple.com/us/album/yerevan-jazz-cafe-after-hours/6785843987" target="_blank" rel="noopener noreferrer">Apple Music ↗</a>
-            <a href="https://open.spotify.com/search/HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
-            <a href="https://music.youtube.com/search?q=HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a>
-            <a href="https://music.amazon.com/search/HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a>
-            <a href="https://www.deezer.com/search/HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">Deezer ↗</a>
-          </div>
-        </div>
+        <div class="record-title"><span>2026 · LATEST</span><h3 id="jazz-title">YEREVAN<br>JAZZ CAFE</h3><em>(AFTER HOURS)</em></div>
+        <div class="record-visual player-card"><iframe title="Yerevan Jazz Cafe (After Hours) by HoparNova on Apple Music" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/yerevan-jazz-cafe-after-hours/6785843987"></iframe></div>
+        <div class="record-copy"><p>Late-night jazz for a city after closing time: coffee, rain, Ararat, Saryan Street, Northern Avenue and the quiet architecture of 2 AM.</p><span>35 TRACKS · JUN 30 2026</span><div class="platform-label">LISTEN ON</div><div class="platform-links" aria-label="Yerevan Jazz Cafe listening platforms"><a class="primary-platform" href="https://music.apple.com/us/album/yerevan-jazz-cafe-after-hours/6785843987" target="_blank" rel="noopener noreferrer">Apple Music ↗</a><a href="https://open.spotify.com/search/HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">Spotify ↗</a><a href="https://music.youtube.com/search?q=HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a><a href="https://music.amazon.com/search/HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a><a href="https://www.deezer.com/search/HoparNova%20Yerevan%20Jazz%20Cafe%20After%20Hours" target="_blank" rel="noopener noreferrer">Deezer ↗</a></div></div>
       </article>
 
-      <article class="record" data-record>
+      <article class="record" data-record aria-labelledby="hookah-title">
         <div class="record-number">03</div>
-        <div class="record-title"><span>2025</span><h3>HOOKAH<br>TIME</h3><em>FEAT. MALO MNIMO</em></div>
-        <div class="record-visual player-card"><iframe title="Hookah Time by HoparNova" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/hookah-time-feat-malo-mnimo/1842965548"></iframe></div>
-        <div class="record-copy">
-          <p>A beat-driven detour into Hip-Hop/Rap. Compact tracks, smoke-room imagery, glow, ritual and night-mode rhythm.</p>
-          <span>21 TRACKS · 48 MIN</span>
-          <div class="platform-label">LISTEN ON</div>
-          <div class="platform-links" aria-label="Hookah Time listening platforms">
-            <a class="primary-platform" href="https://music.apple.com/us/album/hookah-time-feat-malo-mnimo/1842965548" target="_blank" rel="noopener noreferrer">Apple Music ↗</a>
-            <a href="https://open.spotify.com/search/HoparNova%20Hookah%20Time%20Malo%20Mnimo" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
-            <a href="https://music.youtube.com/search?q=HoparNova%20Hookah%20Time%20Malo%20Mnimo" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a>
-            <a href="https://music.amazon.com/albums/B0FSZTVXCY" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a>
-            <a href="https://www.deezer.com/search/HoparNova%20Hookah%20Time%20Malo%20Mnimo" target="_blank" rel="noopener noreferrer">Deezer ↗</a>
-          </div>
-        </div>
+        <div class="record-title"><span>2025</span><h3 id="hookah-title">HOOKAH<br>TIME</h3><em>FEAT. MALO MNIMO</em></div>
+        <div class="record-visual player-card"><iframe title="Hookah Time featuring Malo Mnimo by HoparNova on Apple Music" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/hookah-time-feat-malo-mnimo/1842965548"></iframe></div>
+        <div class="record-copy"><p>A beat-driven turn into hip-hop and rap: compact tracks, smoke-room imagery, glow, ritual and night-mode rhythm with Malo Mnimo.</p><span>21 TRACKS · 48 MIN</span><div class="platform-label">LISTEN ON</div><div class="platform-links" aria-label="Hookah Time listening platforms"><a class="primary-platform" href="https://music.apple.com/us/album/hookah-time-feat-malo-mnimo/1842965548" target="_blank" rel="noopener noreferrer">Apple Music ↗</a><a href="https://open.spotify.com/search/HoparNova%20Hookah%20Time%20Malo%20Mnimo" target="_blank" rel="noopener noreferrer">Spotify ↗</a><a href="https://music.youtube.com/search?q=HoparNova%20Hookah%20Time%20Malo%20Mnimo" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a><a href="https://music.amazon.com/albums/B0FSZTVXCY" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a><a href="https://www.deezer.com/search/HoparNova%20Hookah%20Time%20Malo%20Mnimo" target="_blank" rel="noopener noreferrer">Deezer ↗</a></div></div>
       </article>
 
-      <article class="record inverse" data-record>
+      <article class="record inverse" data-record aria-labelledby="stone-title">
         <div class="record-number">02</div>
-        <div class="record-title"><span>2025</span><h3>STONE<br>BORN</h3></div>
-        <div class="record-visual player-card"><iframe title="Stoneborn by HoparNova" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/stoneborn/1818005621"></iframe></div>
-        <div class="record-copy">
-          <p>A cinematic memorial map: Ani, Mush, Van, Sasun, Aghtamar, Marash and other Armenian places reframed through elegy and atmosphere.</p>
-          <span>21 TRACKS · 1H 6M</span>
-          <div class="platform-label">LISTEN ON</div>
-          <div class="platform-links" aria-label="Stoneborn listening platforms">
-            <a class="primary-platform" href="https://music.apple.com/us/album/stoneborn/1818005621" target="_blank" rel="noopener noreferrer">Apple Music ↗</a>
-            <a href="https://open.spotify.com/search/HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
-            <a href="https://music.youtube.com/search?q=HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a>
-            <a href="https://music.amazon.com/search/HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a>
-            <a href="https://www.deezer.com/search/HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">Deezer ↗</a>
-          </div>
-        </div>
+        <div class="record-title"><span>2025</span><h3 id="stone-title">STONE<br>BORN</h3></div>
+        <div class="record-visual player-card"><iframe title="Stoneborn by HoparNova on Apple Music" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/stoneborn/1818005621"></iframe></div>
+        <div class="record-copy"><p>A cinematic memorial map of Armenian places—Ani, Mush, Van, Sasun, Aghtamar, Marash and more—reframed through atmosphere, elegy and memory.</p><span>21 TRACKS · 1H 6M</span><div class="platform-label">LISTEN ON</div><div class="platform-links" aria-label="Stoneborn listening platforms"><a class="primary-platform" href="https://music.apple.com/us/album/stoneborn/1818005621" target="_blank" rel="noopener noreferrer">Apple Music ↗</a><a href="https://open.spotify.com/search/HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">Spotify ↗</a><a href="https://music.youtube.com/search?q=HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a><a href="https://music.amazon.com/search/HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a><a href="https://www.deezer.com/search/HoparNova%20Stoneborn" target="_blank" rel="noopener noreferrer">Deezer ↗</a></div></div>
       </article>
 
-      <article class="record" data-record>
+      <article class="record" data-record aria-labelledby="fusion-title">
         <div class="record-number">01</div>
-        <div class="record-title"><span>2025 · DEBUT</span><h3>YEREVAN<br>FUSION FLOW</h3></div>
-        <div class="record-visual player-card"><iframe title="Yerevan Fusion Flow by HoparNova" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/yerevan-fusion-flow/1802293847"></iframe></div>
-        <div class="record-copy">
-          <p>The foundation: jazz, electronic texture and Armenian melodic memory translated through Yerevan landmarks, lounges and sunset movement.</p>
-          <span>21 TRACKS · 1H 12M</span>
-          <div class="platform-label">LISTEN ON</div>
-          <div class="platform-links" aria-label="Yerevan Fusion Flow listening platforms">
-            <a class="primary-platform" href="https://music.apple.com/us/album/yerevan-fusion-flow/1802293847" target="_blank" rel="noopener noreferrer">Apple Music ↗</a>
-            <a href="https://open.spotify.com/album/7mZl0spDm2aKMt4Zgu2kMl" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
-            <a href="https://music.youtube.com/playlist?list=OLAK5uy_mv9F3VbVJj1Q1v0x9Y9Q4Z8Q9hJQcQ9Yw" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a>
-            <a href="https://music.amazon.com/search/HoparNova%20Yerevan%20Fusion%20Flow" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a>
-            <a href="https://www.deezer.com/album/727748031" target="_blank" rel="noopener noreferrer">Deezer ↗</a>
-          </div>
-        </div>
+        <div class="record-title"><span>2025 · DEBUT</span><h3 id="fusion-title">YEREVAN<br>FUSION FLOW</h3></div>
+        <div class="record-visual player-card"><iframe title="Yerevan Fusion Flow by HoparNova on Apple Music" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" height="450" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/yerevan-fusion-flow/1802293847"></iframe></div>
+        <div class="record-copy"><p>The foundation of HoparNova: jazz, electronic texture and Armenian melodic memory translated through Yerevan landmarks, lounges and sunset movement.</p><span>21 TRACKS · 1H 12M</span><div class="platform-label">LISTEN ON</div><div class="platform-links" aria-label="Yerevan Fusion Flow listening platforms"><a class="primary-platform" href="https://music.apple.com/us/album/yerevan-fusion-flow/1802293847" target="_blank" rel="noopener noreferrer">Apple Music ↗</a><a href="https://open.spotify.com/album/7mZl0spDm2aKMt4Zgu2kMl" target="_blank" rel="noopener noreferrer">Spotify ↗</a><a href="https://music.youtube.com/playlist?list=OLAK5uy_mv9F3VbVJj1Q1v0x9Y9Q4Z8Q9hJQcQ9Yw" target="_blank" rel="noopener noreferrer">YouTube Music ↗</a><a href="https://music.amazon.com/search/HoparNova%20Yerevan%20Fusion%20Flow" target="_blank" rel="noopener noreferrer">Amazon Music ↗</a><a href="https://www.deezer.com/album/727748031" target="_blank" rel="noopener noreferrer">Deezer ↗</a></div></div>
       </article>
     </section>
 
-    <section class="interlude">
-      <p>ARARAT SUNSET · APRICOT LIGHT · NIGHT MODE · BALLAD OF SASUN · CASCADE AFTER HOURS · VERNISSAGE VIBE · SILK SMOKE · MOON OVER ARARAT</p>
-    </section>
+    <section class="interlude" aria-hidden="true"><div class="interlude-track"><p>ARARAT SUNSET · APRICOT LIGHT · NIGHT MODE · BALLAD OF SASUN · CASCADE AFTER HOURS · VERNISSAGE VIBE · SILK SMOKE · MOON OVER ARARAT · </p><p>ARARAT SUNSET · APRICOT LIGHT · NIGHT MODE · BALLAD OF SASUN · CASCADE AFTER HOURS · VERNISSAGE VIBE · SILK SMOKE · MOON OVER ARARAT · </p></div></section>
 
-    <section class="listen" id="listen">
-      <div><span>02</span><h2>LISTEN</h2></div>
-      <div class="listen-grid">
-        <a href="https://music.apple.com/us/artist/hoparnova/1802256419" target="_blank" rel="noopener noreferrer"><b>APPLE MUSIC</b><span>↗</span></a>
-        <a href="https://open.spotify.com/search/HoparNova" target="_blank" rel="noopener noreferrer"><b>SPOTIFY</b><span>↗</span></a>
-        <a href="https://music.youtube.com/search?q=HoparNova" target="_blank" rel="noopener noreferrer"><b>YOUTUBE MUSIC</b><span>↗</span></a>
-        <a href="https://music.amazon.com/search/HoparNova" target="_blank" rel="noopener noreferrer"><b>AMAZON MUSIC</b><span>↗</span></a>
-        <a href="https://www.deezer.com/search/HoparNova" target="_blank" rel="noopener noreferrer"><b>DEEZER</b><span>↗</span></a>
-      </div>
+    <section class="listen" id="listen" aria-labelledby="listen-title">
+      <div class="listen-head reveal"><span>02</span><h2 id="listen-title">LISTEN</h2></div>
+      <div class="listen-grid reveal"><a href="https://music.apple.com/us/artist/hoparnova/1802256419" target="_blank" rel="noopener noreferrer"><b>APPLE MUSIC</b><span>↗</span></a><a href="https://open.spotify.com/search/HoparNova" target="_blank" rel="noopener noreferrer"><b>SPOTIFY</b><span>↗</span></a><a href="https://music.youtube.com/search?q=HoparNova" target="_blank" rel="noopener noreferrer"><b>YOUTUBE MUSIC</b><span>↗</span></a><a href="https://music.amazon.com/search/HoparNova" target="_blank" rel="noopener noreferrer"><b>AMAZON MUSIC</b><span>↗</span></a><a href="https://www.deezer.com/search/HoparNova" target="_blank" rel="noopener noreferrer"><b>DEEZER</b><span>↗</span></a></div>
     </section>
   </main>
 
-  <footer><span>HOPARNOVA</span><span>© <b id="year"></b> MIRDON PRODUCTION</span><span>YEREVAN / ARMENIA</span></footer>
-  <script defer src="script-v5.js?v=5"></script>
+  <footer><span>HOPARNOVA</span><span>© <b id="year"></b> MIRDON PRODUCTION</span><span>YEREVAN · ARMENIA</span></footer>
+  <script defer src="hoparnova-v10.js?v=10"></script>
 </body>
 </html>
