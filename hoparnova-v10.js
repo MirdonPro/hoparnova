@@ -4,28 +4,31 @@ document.addEventListener('DOMContentLoaded',()=>{
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
 
-  // The homepage now owns its For Brands link and teaser in HTML.
-  // Do not inject duplicate navigation or duplicate brand sections here.
+  if(!document.querySelector('link[href*="sonic-journey-v2.css"]')){
+    const link=document.createElement('link');
+    link.rel='stylesheet';
+    link.href='sonic-journey-v2.css?v=2';
+    document.head.appendChild(link);
+  }
 
-  const masthead=document.querySelector('.masthead');
-  if(masthead&&!masthead.querySelector('.sonic-stage')){
-    const stage=document.createElement('div');
-    stage.className='sonic-stage';
-    stage.setAttribute('aria-hidden','true');
-    stage.innerHTML=`
-      <div class="sonic-object">
-        <div class="sonic-ring r1"></div>
-        <div class="sonic-ring r2"></div>
-        <div class="sonic-ring r3"></div>
-        <div class="sonic-disc">
-          <div class="sonic-core"><div><b>HOPAR<br>NOVA</b><small>YEREVAN / SOUND</small></div></div>
-        </div>
-        <div class="sonic-glass"></div>
+  if(!document.querySelector('.sonic-journey')){
+    const journey=document.createElement('div');
+    journey.className='sonic-journey';
+    journey.dataset.phase='hero';
+    journey.setAttribute('aria-hidden','true');
+    journey.innerHTML=`
+      <div class="sj-scene">
+        <div class="sj-ring a"></div><div class="sj-ring b"></div><div class="sj-ring c"></div>
+        <div class="sj-disc"></div>
+        <div class="sj-core"><div><b>HOPAR<br>NOVA</b><small>YEREVAN / SOUND</small></div></div>
+        <div class="sj-glass"></div>
+        <div class="sj-prism"></div>
+        <div class="sj-wave"><i style="--h:22%"></i><i style="--h:48%"></i><i style="--h:72%"></i><i style="--h:94%"></i><i style="--h:58%"></i><i style="--h:34%"></i><i style="--h:78%"></i><i style="--h:46%"></i><i style="--h:68%"></i><i style="--h:28%"></i></div>
+        <div class="sj-tonearm"></div>
+        <div class="sj-orbit o1"></div><div class="sj-orbit o2"></div><div class="sj-orbit o3"></div>
       </div>
-      <div class="sonic-caption">SONIC OBJECT · 001</div>`;
-    const mastBottom=masthead.querySelector('.mast-bottom');
-    masthead.insertBefore(stage,mastBottom||null);
-    masthead.classList.add('has-sonic-object');
+      <div class="sj-label">SONIC SYSTEM · HN/02</div>`;
+    document.body.appendChild(journey);
   }
 
   const hideLoader=()=>loader?.classList.add('hide');
@@ -34,19 +37,34 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const progress=document.querySelector('.scroll-progress span');
   const heroShape=document.querySelector('.hero-shape');
-  const sonicObject=document.querySelector('.sonic-object');
-  const sonicStage=document.querySelector('.sonic-stage');
-  let pointerX=0,pointerY=0;
-  let ticking=false;
+  const journey=document.querySelector('.sonic-journey');
+  const scene=document.querySelector('.sj-scene');
+  const phases=[
+    {name:'hero',el:document.querySelector('.masthead')},
+    {name:'about',el:document.querySelector('#about')},
+    {name:'brand',el:document.querySelector('.brand-home-teaser')},
+    {name:'records',el:document.querySelector('#records')},
+    {name:'listen',el:document.querySelector('#listen')}
+  ].filter(x=>x.el);
 
-  if(sonicStage&&!reduced&&window.matchMedia('(pointer:fine)').matches){
-    sonicStage.addEventListener('pointermove',e=>{
-      const r=sonicStage.getBoundingClientRect();
-      pointerX=((e.clientX-r.left)/r.width-.5)*8;
-      pointerY=((e.clientY-r.top)/r.height-.5)*-7;
-    });
-    sonicStage.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0});
+  let pointerX=0,pointerY=0,ticking=false;
+  if(!reduced&&window.matchMedia('(pointer:fine)').matches){
+    window.addEventListener('pointermove',e=>{
+      pointerX=(e.clientX/window.innerWidth-.5)*8;
+      pointerY=(e.clientY/window.innerHeight-.5)*-6;
+    },{passive:true});
   }
+
+  const getPhase=()=>{
+    const probe=window.innerHeight*.52;
+    let current=phases[0]?.name||'hero';
+    for(const p of phases){
+      const r=p.el.getBoundingClientRect();
+      if(r.top<=probe&&r.bottom>=probe){current=p.name;break}
+      if(r.top<probe) current=p.name;
+    }
+    return current;
+  };
 
   const onScroll=()=>{
     if(ticking)return;
@@ -54,19 +72,27 @@ document.addEventListener('DOMContentLoaded',()=>{
     requestAnimationFrame(()=>{
       const y=window.scrollY;
       const h=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
-      if(progress) progress.style.transform=`scaleX(${Math.min(y/h,1)})`;
+      const global=Math.min(Math.max(y/h,0),1);
+      if(progress) progress.style.transform=`scaleX(${global})`;
       if(!reduced&&window.innerWidth>760&&heroShape){
-        heroShape.style.transform=`translate3d(0,${Math.min(y*.035,34)}px,0) scale(.8)`;
+        heroShape.style.transform=`translate3d(0,${Math.min(y*.028,28)}px,0) scale(.72)`;
       }
-      if(sonicObject&&!reduced){
-        const hero=masthead?.getBoundingClientRect();
-        const heroHeight=Math.max(masthead?.offsetHeight||window.innerHeight,1);
-        const local=hero?Math.min(Math.max((-hero.top)/heroHeight,0),1):0;
-        const spin=-18+local*132;
-        const tilt=56-local*17+pointerY;
-        const yaw=-10+local*24+pointerX;
-        const lift=local*-18;
-        sonicObject.style.transform=`translate3d(0,${lift}px,0) rotateX(${tilt}deg) rotateY(${yaw}deg) rotateZ(${spin}deg)`;
+      if(journey){
+        const phase=getPhase();
+        if(journey.dataset.phase!==phase) journey.dataset.phase=phase;
+        const labels={hero:'SONIC SYSTEM · HN/02',about:'PLACE → SOUND',brand:'BRAND → SIGNAL',records:'RECORD / NEEDLE',listen:'RESOLVE / LISTEN'};
+        const label=journey.querySelector('.sj-label');
+        if(label) label.textContent=labels[phase]||labels.hero;
+      }
+      if(scene&&!reduced){
+        const spin=global*520;
+        const rx=52-Math.sin(global*Math.PI*2)*13+pointerY;
+        const ry=-10+Math.sin(global*Math.PI*3)*22+pointerX;
+        const rz=-16+global*72;
+        journey?.style.setProperty('--spin',`${spin}deg`);
+        journey?.style.setProperty('--rx',`${rx}deg`);
+        journey?.style.setProperty('--ry',`${ry}deg`);
+        journey?.style.setProperty('--rz',`${rz}deg`);
       }
       ticking=false;
     });
