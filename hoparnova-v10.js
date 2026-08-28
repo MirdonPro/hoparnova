@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded',()=>{
   const year=document.getElementById('year');
   if(year) year.textContent=new Date().getFullYear();
 
-  if(!document.querySelector('link[href*="hero-relic-v10.css"]')){
+  if(!document.querySelector('link[href*="resonance-form-v11.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='hero-relic-v10.css?v=10';
+    link.href='resonance-form-v11.css?v=11';
     document.head.appendChild(link);
   }
-  import('./hero-relic-v10.js?v=10').catch(()=>{
-    if(!document.querySelector('.hero-relic-v10')){
+  import('./resonance-form-v11.js?v=11').catch(()=>{
+    if(!document.querySelector('.resonance-form-v11')){
       const hero=document.querySelector('.masthead');
       if(hero){
         const fallback=document.createElement('div');
-        fallback.className='hero-relic-v10';
+        fallback.className='resonance-form-v11';
         fallback.setAttribute('aria-hidden','true');
-        fallback.innerHTML='<div class="hero-relic-fallback"></div>';
+        fallback.innerHTML='<div class="resonance-fallback"></div>';
         hero.prepend(fallback);
       }
     }
